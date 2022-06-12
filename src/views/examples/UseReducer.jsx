@@ -1,28 +1,16 @@
 import React, { useReducer } from 'react'
 import PageTitle from '../../components/layout/PageTitle'
 
-const initialState = {
-    cart:[],
-    products:[],
-    user:'',
-    // foco
-    number:0
-}
-
-function reducer(state , action){
-  
-    switch (action.type) {
-        case 'add2':
-            return {...state, number:state.number + 2}
-        case 'login':
-            return {...state, user:{name: action.name}}
-        default:
-            return state;
-    }
-}
+import { 
+    initialState,
+    numberReducer,
+    userReducer,
+    numberAddAction
+    } from '../../store';
 
 const UseReducer = (props) => {
-    const  [state, dispatch] = useReducer(reducer, initialState)
+    const  [statenumber, dispatchNumber] = useReducer(numberReducer, initialState)
+    const  [stateuser, dispatchUser] = useReducer(userReducer, initialState)
     return (
         <div className="UseReducer">
             <PageTitle
@@ -30,14 +18,14 @@ const UseReducer = (props) => {
                 subtitle="Uma outra forma de ter estado em componentes funcionais!"
             />
             <div className="center">
-            <span className="text">{state.number}</span>
-            <span className="text">{state.user.name}</span>
+            <span className="text">{statenumber.number}</span>
+            <span className="text">{stateuser.user.name}</span>
             <div>
                 <button className='btn'
-                onClick={() => dispatch({type: 'login', name:'Mardonis'})}>Login</button>
+                onClick={() => dispatchUser({type: 'login', name:'Mardonis'})}>Login</button>
 
                 <button className='btn' 
-                onClick={() => dispatch({type:'add2'})}>+2</button>
+                onClick={() => numberAddAction(dispatchNumber)}>+2</button>
             </div>
             </div>
         </div>
