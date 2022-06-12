@@ -3,6 +3,8 @@
     switch (action.type) {
         case 'add2':
             return {...state, number:state.number + 2}
+        case 'mult':
+            return {...state, number:state.number * action.number / 2}
         default:
             return state;
     }

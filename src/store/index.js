@@ -1,16 +1,17 @@
 
 import {numberReducer ,userReducer} from "./reducers"
-import { numberAddAction } from "./actions/number"
+import { numberAddAction,numberMultAction } from "./actions/number"
  export const initialState = {
     cart:[],
     products:[],
     user:'',
-    number:0
+    number:1
 }
 
 export { 
     numberReducer, 
     userReducer,
-    numberAddAction
+    numberAddAction,
+    numberMultAction
 }
 
